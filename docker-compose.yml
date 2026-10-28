@@ -1,0 +1,50 @@
+name: instatic-patched
+
+services:
+  postgres:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: instatic
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3001:80"
+    environment:
+      PORT: "80"
+      HOST: "0.0.0.0"
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/instatic
+      UPLOADS_DIR: /app/uploads
+      STATIC_DIR: /app/dist
+      PUBLIC_ORIGIN: http://localhost:3001
+      INSTATIC_SECRET_KEY: dev-secret-key-32-chars-long-abc!
+      # Site identity / bootstrap
+      SITE_NAME: My Site
+      ADMIN_EMAIL: admin@example.com
+      ADMIN_PASSWORD: local-dev-password
+      # REBAKE_ON_BOOT: "1"  # force full static re-bake after rendering-code changes
+    volumes:
+      - uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  uploads:
