@@ -18,6 +18,7 @@ Instatic version bump forces a conscious re-check of every overlay.
 | --- | --- | --- | --- |
 | `overlay/src/core/sanitize.ts` | `src/core/sanitize.ts` | Richtext sanitizer keeps GFM tables in article bodies. | TODO: file PR |
 | `overlay/src/core/page-tree/classNames.ts` | `src/core/page-tree/classNames.ts` | Unknown `classIds` fall back to emitting the id as a CSS class (prevents silent drop of seeded classes during admin shell round-trips). | TODO: file PR |
+| `overlay/src/core/markdown/renderMarkdown.ts` | `src/core/markdown/renderMarkdown.ts` | Adds GitHub-style alert callouts (`> [!INFO]`, also NOTE/TIP/WARNING/CAUTION/IMPORTANT) to the markdown pipeline — rendered as `<div data-callout data-callout-type=…><div data-callout-title>…` which the site stylesheet styles. FHound Insights research articles use `[!INFO]` callouts. | TODO: file PR |
 
 ## Upgrade procedure (Instatic base image bump)
 
