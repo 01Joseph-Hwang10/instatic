@@ -16,4 +16,10 @@ USER root
 COPY overlay/server /app/server
 COPY overlay/src /app/src
 
+# Self-hosted KaTeX for FHound Insights: site content references `/katex/*`
+# (published pages set `script-src 'self'` CSP, so a CDN is not an option).
+# Reference copy of KaTeX 0.16.8 — also mirrored in
+# gs://fhound-insights-uploads-live/_instatic/assets/katex/.
+COPY public/katex /app/dist/katex
+
 USER bun
