@@ -43,6 +43,7 @@ check overlay/server/ai/drivers/openaiCompatible.ts            server/ai/drivers
 check overlay/server/ai/conversations/store.ts                 server/ai/conversations/store.ts
 check overlay/src/core/sanitize.ts                             src/core/sanitize.ts
 check overlay/src/core/page-tree/classNames.ts                 src/core/page-tree/classNames.ts
+check overlay/src/core/markdown/renderMarkdown.ts                          src/core/markdown/renderMarkdown.ts
 
 if [[ "$FAIL" -ne 0 ]]; then
   echo "[check-overlays] FAILED — update overlays per overlay/OVERLAYS.md before proceeding."
