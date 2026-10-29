@@ -185,7 +185,10 @@ const RICHTEXT_CONFIG: Config = {
   // Force all links to open in a new tab with noopener
   ADD_ATTR: ['target'],
   // Never allow data: / javascript: in href
-  ALLOW_DATA_ATTR: false,
+  // data-* ATTRIBUTES (non-executable metadata such as the callout markers
+  // emitted by the markdown pipeline) are allowed — DOMPurify blocks them
+  // entirely when this is false, before ADD_ATTR is consulted.
+  ALLOW_DATA_ATTR: true,
   // Prevent mXSS via HTML namespace confusion
   NAMESPACE: 'http://www.w3.org/1999/xhtml',
   // Return a string, not a DOM node
