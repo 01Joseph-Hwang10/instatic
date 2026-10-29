@@ -177,8 +177,11 @@ const RICHTEXT_CONFIG: Config = {
     'hr',
     'table', 'thead', 'tbody', 'tfoot', 'tr', 'th', 'td',
   ],
-  // Restrict attributes to safe subset; data-* is blocked by default
+  // Restrict attributes to safe subset; data-* is blocked by default except
+  // the first-party callout markers emitted by the markdown pipeline
+  // (renderMarkdown.ts alert-callout extension — not third-party input).
   ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'id', 'align', 'colspan', 'rowspan'],
+  ADD_ATTR: ['data-callout', 'data-callout-type', 'data-callout-title'],
   // Force all links to open in a new tab with noopener
   ADD_ATTR: ['target'],
   // Never allow data: / javascript: in href
