@@ -44,6 +44,7 @@ check overlay/server/ai/conversations/store.ts                 server/ai/convers
 check overlay/src/core/sanitize.ts                             src/core/sanitize.ts
 check overlay/src/core/page-tree/classNames.ts                 src/core/page-tree/classNames.ts
 check overlay/src/core/markdown/renderMarkdown.ts                          src/core/markdown/renderMarkdown.ts
+check overlay/src/core/publisher/cspPlan.ts                 src/core/publisher/cspPlan.ts
 
 if [[ "$FAIL" -ne 0 ]]; then
   echo "[check-overlays] FAILED — update overlays per overlay/OVERLAYS.md before proceeding."

@@ -34,6 +34,10 @@ See [`overlay/OVERLAYS.md`](overlay/OVERLAYS.md) for the full registry:
 3. **Richtext sanitizer** — keeps GFM tables in article bodies.
 4. **Class-name fallback** — unknown `classIds` emit the id as a CSS class
    instead of being silently dropped during admin shell round-trips.
+5. **Published-page CSP** — explicit `font-src 'self' data:` so `@font-face`
+   loads never depend on the `default-src` fallback (removes the "font-src was
+   not explicitly set" console violation on every published page). Baked into
+   pages at publish time — republish the site after deploying.
 
 ## Usage
 
