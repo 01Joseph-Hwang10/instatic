@@ -41,6 +41,7 @@ check() {
 check overlay/server/ai/drivers/http/chatCompletions.ts        server/ai/drivers/http/chatCompletions.ts
 check overlay/server/ai/drivers/openaiCompatible.ts            server/ai/drivers/openaiCompatible.ts
 check overlay/server/ai/conversations/store.ts                 server/ai/conversations/store.ts
+check overlay/server/static.ts                                 server/static.ts
 check overlay/src/core/sanitize.ts                             src/core/sanitize.ts
 check overlay/src/core/page-tree/classNames.ts                 src/core/page-tree/classNames.ts
 check overlay/src/core/markdown/renderMarkdown.ts                          src/core/markdown/renderMarkdown.ts
